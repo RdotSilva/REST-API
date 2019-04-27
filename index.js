@@ -4,7 +4,8 @@ const routes = require('./routes/api');
 // Set up Express App
 const app = express();
 
-app.use(routes);
+// Initialize routes
+app.use('/api', routes);
 
 // Listen for requests
 app.listen(process.env.port || 4000, () => {
