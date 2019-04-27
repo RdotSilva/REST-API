@@ -21,3 +21,10 @@ router.put('/ninjas/:id', (req, res) => {
 		type: 'PUT'
 	});
 });
+
+// Delete a ninja from the db
+router.delete('/ninjas/:id', (req, res) => {
+	res.send({
+		type: 'DELETE'
+	});
+});
