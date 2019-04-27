@@ -28,3 +28,5 @@ router.delete('/ninjas/:id', (req, res) => {
 		type: 'DELETE'
 	});
 });
+
+module.exports = router;
