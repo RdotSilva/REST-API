@@ -14,3 +14,10 @@ router.post('/ninjas', (req, res) => {
 		type: 'POST'
 	});
 });
+
+// Update a ninja in the db
+router.put('/ninjas/:id', (req, res) => {
+	res.send({
+		type: 'PUT'
+	});
+});
