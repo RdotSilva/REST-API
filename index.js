@@ -1,9 +1,13 @@
 const express = require('express');
 const routes = require('./routes/api');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 // Set up Express App
 const app = express();
+
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/ninjago');
 
 app.use(bodyParser.json());
 
