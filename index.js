@@ -18,7 +18,7 @@ app.use('/api', routes);
 // Error handling middleware
 app.use((err, req, res, next) => {
 	// console.log(err);
-	res.send({ error: err.message });
+	res.status(422).send({ error: err.message });
 });
 
 // Listen for requests
