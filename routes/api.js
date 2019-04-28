@@ -12,7 +12,9 @@ router.get('/ninjas', (req, res) => {
 router.post('/ninjas', (req, res) => {
 	console.log(req.body);
 	res.send({
-		type: 'POST'
+		type: 'POST',
+		name: req.body.name,
+		rank: req.body.rank
 	});
 });
 
