@@ -8,6 +8,7 @@ const app = express();
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost/ninjago');
+mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
 
