@@ -24,10 +24,16 @@
 		<!-- Create React Component-->
 		<script type="text/babel">
 			const Ninjas = React.createClass({
-				render: () => {
+			             getInitialState: () => {
+			                 return ({
+			                     ninjas: []
+			                 })
+			             },
+
+				render:
 					return (
 						<div id="ninja-container">
-							<form id="search">
+							<form id="search" onSubmit={this.handleSubmit}>
 								<label>Enter your latitude:</label>
 								<input
 									type="text"
@@ -44,8 +50,22 @@
 								/>
 								<input type="submit" value="Find Ninjas" />
 							</form>
+							<ul>{ninjas}</ul>
 						</div>
 					);
+				},
+				handleSubmit: e => {
+					e.preventDefault();
+					const lng = this.refs.lng.value;
+					const lat = this.refs.lat.value;
+
+					fetch(`/api/ninjas?lng=${lng}&lat=${lat}`).then(data => {
+						return data.json();
+					}).then(json => {
+			                     this.setState({
+			                         ninjas: json;
+			                     })
+			                 })
 				}
 			});
 		</script>
