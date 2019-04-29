@@ -7,6 +7,22 @@ router.get('/ninjas', (req, res, next) => {
 	// Ninja.find({}).then(ninjas => {
 	// 	res.send(ninjas);
 	// });
+	Ninja.aggregate()
+		.near({
+			near: {
+				type: 'Point',
+				coordinates: [
+					parseFloat(req.query.lng),
+					parseFloat(req.query.lat)
+				]
+			},
+			maxDistance: 100000,
+			spherical: true,
+			distanceField: 'dist.calculated'
+		})
+		.then(ninjas => {
+			res.send(ninjas);
+		});
 });
 
 // Add a new ninja to the db
